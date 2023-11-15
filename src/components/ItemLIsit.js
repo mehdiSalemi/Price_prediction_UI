@@ -1,12 +1,13 @@
 import React from 'react'
 import Item from './Item'
-import { useState } from 'react';
+import { useState} from 'react';
 
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Modal from './Modal';
+
 const items = [
   {"name": "lengthWithUsefulLoad_km","des":"length of the way with useful load in case of j-th transport task (KM)"},
   {"name": "fulePrice_euroLitter","des":"fuel price(Euro/ liter)"},
@@ -62,7 +63,6 @@ export default function ItemLIsit() {
   });
 
 
- 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -122,7 +122,8 @@ export default function ItemLIsit() {
     <h1>Data Entry Form</h1>
       <form method="post" onSubmit={handleSubmit} >
       {items.map(item => (
-            <Item name={item.name} des={item.des} handleChange= {handleChange}/>
+             
+            <Item name={item.name} des={item.des} handleChange= {handleChange} />
           ))}
       
         <button type="submit" class="btn btn-primary">Submit</button>
