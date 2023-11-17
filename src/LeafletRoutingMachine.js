@@ -3,13 +3,14 @@ import L, { point } from "leaflet";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import { useMap } from "react-leaflet";
-import { Distance } from "./Countext";
-// import { PointContext } from "./Countext";
+import { Distance, Points } from "./Countext";
+
 
 const LeafletRoutingMachine = () => {
 const map = useMap();
 const {distance,setDistance} = useContext(Distance)
-const [points,setPoints] = useState([[49.8153, 6.1296]])
+// const [points,setPoints] = useState([Points])
+const [points,setPoints] = useState([])
 
 
 
@@ -17,13 +18,9 @@ let DefaultIcon = L.icon({
     iconUrl: "/marche.gif",
     iconSize: [20, 20],
 });
-//   useEffect(() => {     
-var marker1 = L.marker(points[0], { icon: DefaultIcon }).addTo( map  );
-let a = 0
-map.on("click", function (e) {
-    a= a +1
-    console.log("count of click :" + a)
-    setPoints([...points,[e.latlng.lat, e.latlng.lng]])
+
+useEffect(()=>{
+    console.log(points)
     if(points.length === 2 ){
         L.marker(points[1]).addTo(map);
         L.Routing.control({
@@ -47,13 +44,13 @@ map.on("click", function (e) {
             fitSelectedRoutes: true,
             showAlternatives: false,
         })
-            .on("routesfound", function (e) {
-            e.routes[0].coordinates.forEach((c, i) => {
-                setTimeout(() => {
-                marker1.setLatLng([c.lat, c.lng]);
-                }, 500 * i);
-            });
-            })
+            // .on("routesfound", function (e) {
+            // e.routes[0].coordinates.forEach((c, i) => {
+            //     setTimeout(() => {
+            //     marker1.setLatLng([c.lat, c.lng]);
+            //     }, 500 * i);
+            // });
+            // })
             .addTo(map);
     }
     const h3Tag = document.querySelector('.leaflet-routing-alt  h3')
@@ -66,12 +63,22 @@ map.on("click", function (e) {
       } else {
         console.log('No <h3> tag found within the element with class "mehdi"');
       }
-  
+
+},[points])
+
+
+ 
+// var marker1 = L.marker(points[0], { icon: DefaultIcon }).addTo( map  );
+
+map.on("click", function (e) {
+    
+ 
+    setPoints([...points,[e.latlng.lat, e.latlng.lng]])
+
+
 });
 
-        // }
-//     ,[]);
-//   return null;
+  return null;
 };
 
 export default LeafletRoutingMachine;

@@ -5,47 +5,55 @@ import './App.css';
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css'
 
-import ItemLIsit from './components/ItemLIsit';
+
 import LeafletRoutingMachine from './LeafletRoutingMachine';
-import { useEffect, useState } from 'react';
-import { Distance } from './Countext';
+import { useState } from 'react';
+import { Distance, Points } from './Countext';
 
+import CountriesList from './components/CountriesList';
 
+function test (){
+  const coord = [49.8153, 6.1296] 
+  fetch(`https://nominatim.openstreetmap.org/reverse?lat=${coord[0]}&lon=${coord[1]}&format=json`, {
+    headers: {
+      'User-Agent': 'ID of your APP/service/website/etc. v0.1'
+    }
+  }).then(res => res.json())
+    .then(res => {
+      console.log(res)
+      console.log(res.display_name)
+      console.log(res.address)
+  })
+}
 
 function App() {
   const position = [49.8153, 6.1296];
   const [distance,setDistance] = useState([0,0])
+  // const [points,setPoints] = useState([])
   
-  useEffect(() => {
-    
-    document.getElementById("lengthWithUsefulLoad_km").value = distance[0]
-   
-
-   
-  },[distance])
-  return (
-<div className="App">
-   <Distance.Provider value={{distance,setDistance}}>
-   <MapContainer center={position} zoom={13} scrollWheelZoom={true} >
-        <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=mEsBIlAG4G16W5wZArn5"
-                    />
-        {/*  <LeafletGeocoder /> */}
-        <LeafletRoutingMachine />
-      
-    </MapContainer>
-    <ItemLIsit/>
-    </Distance.Provider>
-
-    
-
- 
 
 
-   
-  
-</div>
+return (
+    <div className="App">
+
+      {/* <Points.Provider value={{points,setPoints}}> */}
+          <Distance.Provider value={{distance,setDistance}}>
+          
+            <MapContainer center={position} zoom={13} scrollWheelZoom={true} >
+                <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=mEsBIlAG4G16W5wZArn5"
+                            />
+                {/*  <LeafletGeocoder /> */}
+                <LeafletRoutingMachine />
+              
+            </MapContainer>
+
+            </Distance.Provider>https://translate.google.com/?sl=en&tl=fa&text=rig&op=translate
+
+            <CountriesList/>
+      {/* </Points.Provider> */}
+    </div>
   );
 }
 

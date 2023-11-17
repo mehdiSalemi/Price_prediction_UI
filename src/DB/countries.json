@@ -1,0 +1,84 @@
+{
+    "countries":[
+        {
+            "id" :"1" ,
+            "name":"France",
+            "iso": "FRA",
+            "feeMotorway":"0",
+            "fulPrice" : "1.817",
+            "latitude": "48.8566",
+            "longitude":"2.3522"
+        },
+        {
+            "id":"2",
+            "name" : "United Kingdom",
+            "iso" : "GBR",
+            "fulPrice" : "1.9",
+            "latitude": "51.5072",
+            "longitude":"0.1276"
+        },
+        {
+            "id" :"3" ,
+            "name":"Switzerland",
+            "iso" :"CHE",
+            "fulPrice" : "2.07",
+            "latitude": "46.9480",
+            "longitude":"7.4474"
+        },
+        {
+            "id":"4",
+            "name" : "Germany",
+            "iso" :"DEU",
+            "fulPrice" : "1.805",
+            "latitude": "52.5200",
+            "longitude":"13.4050"
+        },
+        {
+            "id" :"5" ,
+            "name":"Luxembour",
+            "iso" :"LUX",
+            "fulPrice" : "1.7",
+            "latitude": "49.8153",
+            "longitude":"6.1296"
+        },
+        {
+            "id":"6",
+            "name" : "Netherlands",
+            "iso" :"NLD",
+            "fulPrice" : "1.95",
+            "latitude": "52.3676",
+            "longitude":"4.9041"
+        },
+        {
+            "id":"7",
+            "name" : "Belgium",
+            "iso" :"BLE",
+            "fulPrice" : "1.795",
+            "latitude": "50.8476",
+            "longitude":"4.3572"
+        },
+        {
+            "id" :"8" ,
+            "name":"Italy",
+            "iso" :"ITA",
+            "fulPrice" : "1.85",
+            "latitude": "41.9028",
+            "longitude":"12.4964"
+        },
+        {
+            "id":"9",
+            "name" : "others",
+            "iso" :"oth",
+            "fulPrice" : "0",
+            "latitude": "0",
+            "longitude":"0"
+        }
+
+    ],
+    
+    "vehicle":[
+        { "id":"1", "name":"CSV", "value":"0.12"},
+        { "id":"2", "name":"BOX", "value":"0.8"}
+    ]
+    
+}
