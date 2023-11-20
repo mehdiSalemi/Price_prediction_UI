@@ -10,7 +10,9 @@ import LeafletRoutingMachine from './LeafletRoutingMachine';
 import { useState } from 'react';
 import { Distance, Points } from './Countext';
 
-import CountriesList from './components/CountriesList';
+import CountriesList from './components/CalculationForm';
+import CalculationForm from './components/CalculationForm';
+
 
 function test (){
   const coord = [49.8153, 6.1296] 
@@ -28,16 +30,16 @@ function test (){
 
 function App() {
   const position = [49.8153, 6.1296];
-  const [distance,setDistance] = useState([0,0])
-  // const [points,setPoints] = useState([])
+
+  const [points,setPoints] = useState([])
   
 
 
 return (
     <div className="App">
 
-      {/* <Points.Provider value={{points,setPoints}}> */}
-          <Distance.Provider value={{distance,setDistance}}>
+      <Points.Provider value={{points,setPoints}}>          
+ 
           
             <MapContainer center={position} zoom={13} scrollWheelZoom={true} >
                 <TileLayer
@@ -49,10 +51,12 @@ return (
               
             </MapContainer>
 
-            </Distance.Provider>https://translate.google.com/?sl=en&tl=fa&text=rig&op=translate
+          
 
-            <CountriesList/>
-      {/* </Points.Provider> */}
+            <CalculationForm/>
+
+        </Points.Provider>
+
     </div>
   );
 }

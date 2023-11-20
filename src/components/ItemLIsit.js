@@ -9,11 +9,11 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import Modal from './Modal';
 
 const items = [
-  {"name": "lengthWithUsefulLoad_km","des":"length of the way with useful load in case of j-th transport task (KM)"},
-  {"name": "fulePrice_euroLitter","des":"fuel price(Euro/ liter)"},
-  {"name": "fuleConsumptionEmptyVehicle_litterKM","des":"specific fuel consumption in case of empty vehicle (Litter/KM)"},
-  {"name": "factorFuelConsumptionDependTopographicalFactor","des":"correction factor for fuel consumption depending on topographical conditions"},
-  {"name": "fcatorDifferentLoadingCondition_litterTonKm","des":"correction factor for different loading conditions (every additional tons ofuseful load results in 0.5 litre extra fuel consumption)(liter/ton.KM)"},
+  // {"name": "lengthWithUsefulLoad_km","des":"length of the way with useful load in case of j-th transport task (KM)"},
+  // {"name": "fulePrice_euroLitter","des":"fuel price(Euro/ liter)"},
+  // {"name": "fuleConsumptionEmptyVehicle_litterKM","des":"specific fuel consumption in case of empty vehicle (Litter/KM)"},
+  // {"name": "factorFuelConsumptionDependTopographicalFactor","des":"correction factor for fuel consumption depending on topographical conditions"},
+  // {"name": "fcatorDifferentLoadingCondition_litterTonKm","des":"correction factor for different loading conditions (every additional tons ofuseful load results in 0.5 litre extra fuel consumption)(liter/ton.KM)"},
   {"name": "transporetdUsefullLoad_ton","des":"transported useful load (Ton)"},
   {"name": "lengthWithOutLoad_km","des":"length of way without load in case of the j-th transport task (KM)"},
   {"name": "t_Loading_hour","des":" time consumption of loading in and loading out (hour)"},
@@ -38,29 +38,29 @@ const items = [
 export default function ItemLIsit() {
   const [showModal,setShowModal] = useState(false)
   const [formData, setFormData] = useState( {
-    lengthWithUsefulLoad_km: 0,
-    t_ConsumptionWithload_hour: 0,
-    lengthWithOutLoad_km: 0,
-    t_ConsumptionWithoutLoad_hour: 0,
-    fulePrice_euroLitter: 0,
-    fuleConsumptionEmptyVehicle_litterKM: 0,
-    factorFuelConsumptionDependTopographicalFactor: 0,
-    transporetdUsefullLoad_ton: 0,
-    fcatorDifferentLoadingCondition_litterTonKm: 0,
-    t_Loading_hour: 0,
-    t_waitingLoading_hour: 0,
-    t_waitingFrontier_hour: 0,
-    t_resting_hours: 0,
-    t_camionStop_hours: 0,
-    specialWaitingCost_euroHour: 0,
-    feeOfMotorways_euro: 0,
-    ParkingFee_eruo: 0,
-    avg_labourCost_euroHour: 0,
-    t_consumptionAchivmentTransportTask_day: 0,
-    specificMaintenanceVeicles_eruoDay: 0,
-    factorMaintananceCost_eruo: 0,
-    rentingCostPerDay: 0
-  });
+        lengthWithUsefulLoad_km: 0,
+        t_ConsumptionWithload_hour: 0,
+        lengthWithOutLoad_km: 0,
+        t_ConsumptionWithoutLoad_hour: 0,
+        fulePrice_euroLitter: 0,
+        fuleConsumptionEmptyVehicle_litterKM: 0,
+        factorFuelConsumptionDependTopographicalFactor: 0,
+        transporetdUsefullLoad_ton: 0,
+        fcatorDifferentLoadingCondition_litterTonKm: 0,
+        t_Loading_hour: 0,
+        t_waitingLoading_hour: 0,
+        t_waitingFrontier_hour: 0,
+        t_resting_hours: 0,
+        t_camionStop_hours: 0,
+        specialWaitingCost_euroHour: 0,
+        feeOfMotorways_euro: 0,
+        ParkingFee_eruo: 0,
+        avg_labourCost_euroHour: 0,
+        t_consumptionAchivmentTransportTask_day: 0,
+        specificMaintenanceVeicles_eruoDay: 0,
+        factorMaintananceCost_eruo: 0,
+        rentingCostPerDay: 0
+      });
 
 
 
@@ -70,6 +70,7 @@ export default function ItemLIsit() {
       ...formData,
       [name]: value,
     });
+
 
   };
 
