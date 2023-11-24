@@ -6,9 +6,13 @@ import { useMap } from "react-leaflet";
 import { Distance, Points } from "./Countext";
 
 
+
 const LeafletRoutingMachine = () => {
         const map = useMap();
         const {points,setPoints} = useContext(Points)
+        points.map((point)=>{
+            L.marker(point).addTo(map);
+        })
 
         let DefaultIcon = L.icon({
             iconUrl: "/marche.gif",
@@ -22,7 +26,7 @@ const LeafletRoutingMachine = () => {
                 setPoints([])
             }else
             if(points.length === 2 ){
-                L.marker(points[1]).addTo(map);
+               
                 L.Routing.control({
                     waypoints: [
                     L.latLng(points[0]),
@@ -58,6 +62,7 @@ const LeafletRoutingMachine = () => {
         },[points])
 
         map.on("click", function (e) {
+            console.log(e)
              setPoints([...points,[e.latlng.lat, e.latlng.lng]])
            
 
@@ -67,3 +72,5 @@ const LeafletRoutingMachine = () => {
 };
 
 export default LeafletRoutingMachine;
+
+

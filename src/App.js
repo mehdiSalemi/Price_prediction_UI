@@ -8,25 +8,14 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css'
 
 import LeafletRoutingMachine from './LeafletRoutingMachine';
 import { useState } from 'react';
-import { Distance, Points } from './Countext';
+import {  Points } from './Countext';
 
-import CountriesList from './components/CalculationForm';
 import CalculationForm from './components/CalculationForm';
 
+import SearchBox from './components/SearchBox';
 
-function test (){
-  const coord = [49.8153, 6.1296] 
-  fetch(`https://nominatim.openstreetmap.org/reverse?lat=${coord[0]}&lon=${coord[1]}&format=json`, {
-    headers: {
-      'User-Agent': 'ID of your APP/service/website/etc. v0.1'
-    }
-  }).then(res => res.json())
-    .then(res => {
-      console.log(res)
-      console.log(res.display_name)
-      console.log(res.address)
-  })
-}
+
+
 
 function App() {
   const position = [49.8153, 6.1296];
@@ -36,27 +25,24 @@ function App() {
 
 
 return (
-    <div className="App">
-
-      <Points.Provider value={{points,setPoints}}>          
- 
-          
-            <MapContainer center={position} zoom={13} scrollWheelZoom={true} >
+    <div className="App"  style={{ display:"flex" ,flexDirection:"row", widows: "100vw", height:"50vh"}}>
+      <Points.Provider value={{points,setPoints}}> 
+          <div style={{ width:"50vw"}}>
+          <MapContainer center={position} zoom={13} scrollWheelZoom={true} >
                 <TileLayer
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=mEsBIlAG4G16W5wZArn5"
                             />
                 {/*  <LeafletGeocoder /> */}
                 <LeafletRoutingMachine />
-              
             </MapContainer>
-
-          
-
+          </div>
+          <div style={{ width:"50vw"}}>
+            <SearchBox/>
             <CalculationForm/>
+          </div >
 
         </Points.Provider>
-
     </div>
   );
 }
