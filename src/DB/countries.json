@@ -15,10 +15,10 @@
             "name":"France",
             "iso": "FRA",
             "feeMotorway":"0.25",
-            "fulPrice" : "1.817",
+            "fulPrice" : "1.76",
             "latitude": "48.8566",
             "longitude":"2.3522",
-            "labourCost":"35"
+            "labourCost":"10.11" 
         },
         {
             "id":"2",
@@ -28,27 +28,27 @@
             "fulPrice" : "1.9",
             "latitude": "51.5072",
             "longitude":"0.1276",
-            "labourCost":"40"
+            "labourCost":"22.415"
         },
         {
             "id" :"3" ,
             "name":"Switzerland",
             "iso" :"CHE",
             "feeMotorway":"0",
-            "fulPrice" : "2.07",
+            "fulPrice" : "2",
             "latitude": "46.9480",
             "longitude":"7.4474",
-            "labourCost":"45"
+            "labourCost":"21.44"
         },
         {
             "id":"4",
             "name" : "Germany",
             "iso" :"DE",
             "feeMotorway":"0",
-            "fulPrice" : "1.805",
+            "fulPrice" : "1.73",
             "latitude": "52.5200",
             "longitude":"13.4050",
-            "labourCost":"38"
+            "labourCost":"7.66"
         },
         {
             "id" :"5" ,
@@ -58,7 +58,7 @@
             "fulPrice" : "1.7",
             "latitude": "49.8153",
             "longitude":"6.1296",
-            "labourCost":"40"
+            "labourCost":"19.16"
         },
         {
             "id":"6",
@@ -68,7 +68,7 @@
             "fulPrice" : "1.95",
             "latitude": "52.3676",
             "longitude":"4.9041",
-            "labourCost":"35"
+            "labourCost":"9.5"
         },
         {
             "id":"7",
@@ -78,37 +78,37 @@
             "fulPrice" : "1.795",
             "latitude": "50.8476",
             "longitude":"4.3572",
-            "labourCost":"35"
+            "labourCost":"13.55"
         },
         {
             "id" :"8" ,
             "name":"Italy",
             "iso" :"ITA",
             "feeMotorway":"0",
-            "fulPrice" : "1.85",
+            "fulPrice" : "1.8",
             "latitude": "41.9028",
             "longitude":"12.4964",
-            "labourCost":"35"
+            "labourCost":"14.22"
         },
         {
             "id":"9",
             "name" : "Portugal",
             "iso" :"PT",
             "feeMotorway":"0",
-            "fulPrice" : "1.80",
+            "fulPrice" : "1.63",
             "latitude": "48.2082",
             "longitude":"16.3719",
-            "labourCost":"35"
+            "labourCost":"5.04"
         },
         {
             "id":"10",
             "name" : "Austria",
             "iso" :"AT",
             "feeMotorway":"0",
-            "fulPrice" : "1.80",
+            "fulPrice" : "1.66",
             "latitude": "38.722",
             "longitude":"9.13",
-            "labourCost":"30"
+            "labourCost":"14.77"
         }
 
     ],
@@ -127,3 +127,5 @@
     ]
     
 }
+
+

@@ -1,0 +1,16 @@
+// How much money does a person working in Courier / Delivery / Transport / Drivers make in X country?
+It is avrage.
+
+Country,       Salary avarage(EURO),   Per/hr,        Ref
+France,             29000 ,             16.1111            https://www.salaryexplorer.com/average-salary-wage-comparison-france-courier-delivery-transport-drivers-c74f20
+France,             22463,              11                 https://www.erieri.com/salary/job/driver/france/paris#:~:text=Salary%20Recap,of%20education%20for%20a%20Driver.
+
+United Kingdom,     40347 ,             22.415            https://www.glassdoor.co.uk/Salaries/courier-driver-salary-SRCH_KO0,14.htm#:~:text=The%20average%20salary%20for%20Courier,from%20%C2%A3830%20%2D%20%C2%A313%2C863.
+Switzerland,        38595,              21.44           https://www.salaryexplorer.com/average-salary-wage-comparison-switzerland-driver-c210j232
+Germany,            13800 ,             7.6666              https://www.salaryexplorer.com/average-salary-wage-comparison-germany-driver-c81j232
+Luxembourg,         34500,              19.1666           https://www.salaryexplorer.com/average-salary-wage-comparison-luxembourg-courier-delivery-transport-drivers-c125f20
+Netherlands,        17100,              9.5            https://www.salaryexplorer.com/average-salary-wage-comparison-netherlands-delivery-driver-c152j229
+Belgium,            24400,              13.5555               https://www.salaryexplorer.com/average-salary-wage-comparison-belgium-delivery-driver-c21j229
+Austria,            26600,              14.7777               https://www.salaryexplorer.com/average-salary-wage-comparison-austria-courier-delivery-transport-drivers-c14f20
+Portugal,           9080,               5.04               https://www.salaryexplorer.com/average-salary-wage-comparison-portugal-delivery-driver-c174j229
+Italy               25600,              14.2222               https://www.salaryexplorer.com/average-salary-wage-comparison-italy-courier-delivery-transport-drivers-c105f20

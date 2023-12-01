@@ -13,6 +13,7 @@ import {  Points } from './Countext';
 import CalculationForm from './components/CalculationForm';
 
 import SearchBox from './components/SearchBox';
+import History from './components/History';
 
 
 
@@ -25,9 +26,10 @@ function App() {
 
 
 return (
-    <div className="App"  style={{ display:"flex" ,flexDirection:"row", widows: "100vw", height:"50vh"}}>
+  <div>
+    <div className="App"  style={{ border:"1px solid red" ,display:"flex" ,flexDirection:"row", widows: "100vw", height:"50vh"}}>
       <Points.Provider value={{points,setPoints}}> 
-          <div style={{ width:"50vw"}}>
+          <div style={{border:"1px solid blue", width:"50vw"}}>
           <MapContainer center={position} zoom={13} scrollWheelZoom={true} >
                 <TileLayer
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -37,13 +39,20 @@ return (
                 <LeafletRoutingMachine />
             </MapContainer>
           </div>
-          <div style={{ width:"50vw"}}>
+          <div style={{border:"1px solid yellow", width:"50vw"}}>
             <SearchBox/>
             <CalculationForm/>
           </div >
 
         </Points.Provider>
     </div>
+    <div style={{border:"1px solid black",  height:"50vw"}}>
+       <div style={{margin:"5px", }}>
+          <h2>History</h2>
+          <History/>
+       </div>
+    </div>
+  </div>
   );
 }
 

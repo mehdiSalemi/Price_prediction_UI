@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Modal from './Modal';
+import History from './History';
 
 
 
@@ -14,14 +15,14 @@ export default function CalculationForm() {
     const [countries, setCountries] = useState([])
     const [detailsCountry, setDetailsCountry] = useState([])
     const [vehicle, setVehicle] = useState([])
-    const [profitList, setProfitList] = useState([])
-    const [profit, setProfit] = useState(0)
+
     const [detailsVehicle, setDetailsVehicle] = useState([])
     const [loadPerTon, setLoadPerTon] = useState()
     const [formData, setFormData] = useState({})
     const [showModal,setShowModal] = useState(false)
     const [resCalculate,setResCalculate] = useState()
-
+    const [address,setAddress] = useState([])
+ 
     const [urlCountry, setUrlCountry] = useState('http://localhost:3000/countries')  
     const [urlVicle, setuUrlVicle] = useState('http://localhost:3000/vehicle')  
 
@@ -52,16 +53,24 @@ export default function CalculationForm() {
   useEffect(()=>{
     console.log(points)
    
-    if(points.length > 0){
-      const startPoint= points[0];
-      fetch(`https://nominatim.openstreetmap.org/reverse?lat=${startPoint[0]}&lon=${startPoint[1]}&format=json`, {
+    if(points.length > 0 && points.length <=2){
+      let loc= points[0]
+      if(points.length === 2){
+         loc= points[1]
+      }
+      fetch(`https://nominatim.openstreetmap.org/reverse?lat=${loc[0]}&lon=${loc[1]}&format=json`, {
         headers: {
           'User-Agent': 'ID of your APP/service/website/etc. v0.1'
         }
       }).then(res => res.json())
         .then(res => {
           console.log(res.address.country )
-          country_set(res.address.country )
+         
+          let ads = res.address.country+" "+res.address.city+" "+res.address.postcod
+          // setAddress([...address,[ads, loc[0],loc[1]]])
+          setAddress([...address,[ads]])
+          country_set(res.address.country ,ads)
+        
       })
     }
 
@@ -87,7 +96,6 @@ async function country_set(name){
    await fetch(urlCountry+'?name='+name)
        .then(res=> res.json())
        .then(json => {
-        console.log(json)
         setDetailsCountry([...detailsCountry,json[0]])
        }).catch(
         (err)=>console.log(err)
@@ -102,6 +110,7 @@ function vehicle_onChange(name){
 
   
 async  function calculation(){
+    console.log(address)
 
     const h3Tag = document.querySelector('.leaflet-routing-alt  h3')
    
@@ -144,8 +153,9 @@ async  function calculation(){
       t_consumptionAchivmentTransportTask_day: 0, //defualt 0.time consumption of the achievement of a transport task (day)
       specificMaintenanceVeicles_eruoDay: 0, //defualt 0. specific maintenance cost of vehicles (eur/day)
       factorMaintananceCost_eruo: 0, //defualt 0.correction factor for maintenance cost of different vehicles
-      rentingCostPerDay: 0//defualt 0 . renting cost per time unit (eur/day)
-     
+      rentingCostPerDay: 0,//defualt 0 . renting cost per time unit (eur/day)
+      startPoint:address[0],
+      endPoint:address[1]
     }
      setFormData(jsonItem)
    
@@ -190,7 +200,8 @@ const handleSubmit = async (e) => {
       <div class="modal-content">
       <span class="close" onClick={()=>{
                                         setShowModal(false);
-                                        window.location.reload(false);}
+                                      //  window.location.reload(false);
+                                      }
                                   }>&times;</span>
           <p>cost own vehicle and driver : {(resCalculate['cost_ownVehicleAndDriver'])}</p>
           <p>cost own vehicle and driver with 10% profit : {(resCalculate['cost_ownVehicleAndDriver_10persantageProfit'])}</p>
@@ -221,6 +232,7 @@ const handleSubmit = async (e) => {
    
     
         <button type="submit" on onClick={handleSubmit} class="btn btn-primary">Submit</button>
+        {showModal && <History points={points}  res= {resCalculate}/>}
     {/* </form>     */}
 
   </div>
