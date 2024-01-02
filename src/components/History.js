@@ -21,19 +21,13 @@ export default function History() {
 
       const dataRes = await response.json();
       const ary = []
-      const ary2= []
+
       if (response.ok) {
-
-        for(const a in dataRes){
-          if(aryTitle.includes(a) ){
-            for(const j in dataRes[a] ) {
-              ary2.push(dataRes[a][j])
-            }
-          ary.push(ary2)
-          }
+        for(let j=0; j< Object.keys(dataRes[aryTitle[0]]).length;j++ ){
+          ary.push([dataRes[aryTitle[0]][j],dataRes[aryTitle[1]][j],dataRes[aryTitle[2]][j]])
         }
-
-     setRes(ary)
+      setRes(ary)
+  
 
       } else {
         // Handle registration failure
@@ -56,6 +50,7 @@ export default function History() {
 
 
       {!errors &&
+        
         <TableCom titles={aryTitle} data={res}/>
       }
    

@@ -114,9 +114,9 @@
     ],
     
     "vehicle":[
-        { "id":"0", "name":"...", "consumption":"0"},
-        { "id":"1", "name":"CSV", "consumption":"0.16"},
-        { "id":"2", "name":"BOX", "consumption":"0.8"}
+        { "id":"0", "name":"...", "consumption":"0", "vehicleWahight":"0"},
+        { "id":"1", "name":"CSV", "consumption":"0.16", "vehicleWahight":"2.2"},
+        { "id":"2", "name":"BOX", "consumption":"0.8", "vehicleWahight":"1.8"}
     ],
     "ProfitMargin":[
         {"id":"0" , "name":"0"},

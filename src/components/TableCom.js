@@ -14,6 +14,8 @@ export default function TableCom(props) {
           </tr>
           {
           props.data.map((item)=>(
+     
+           
               <tr>
                 {
                   item.map((val)=>(
@@ -23,7 +25,7 @@ export default function TableCom(props) {
               </tr>
           ))
        
-          }
+          }×~
 
       </table>
   </div>

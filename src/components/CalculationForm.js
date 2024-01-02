@@ -15,7 +15,7 @@ export default function CalculationForm() {
     const [countries, setCountries] = useState([])
     const [detailsCountry, setDetailsCountry] = useState([])
     const [vehicle, setVehicle] = useState([])
-
+    const [vehicleIsSelected, setVehicleIsSelected] = useState(false)
     const [detailsVehicle, setDetailsVehicle] = useState([])
     const [loadPerTon, setLoadPerTon] = useState()
     const [formData, setFormData] = useState({})
@@ -106,6 +106,8 @@ function vehicle_onChange(name){
   fetch(urlVicle+'?name='+name)
   .then(res=> res.json())
   .then(json => setDetailsVehicle([json[0]]))
+  setVehicleIsSelected(true)
+
 }
 
   
@@ -162,9 +164,9 @@ async  function calculation(){
 }
 
 const handleSubmit = async (e) => {
-    await calculation()
-    console.log(formData)
-    console.log(JSON.stringify(formData))
+    console.log(vehicle)
+    await calculation();
+
   
     e.preventDefault();
     try {
@@ -217,16 +219,22 @@ const handleSubmit = async (e) => {
 
      {/* <form method="post" onSubmit={handleSubmit} > */}
 
-        <label for="startPoints">Select start point:</label> 
+        {!address[0] && <label for="startPoints">Select start point:</label>}
+        {address[0] && <label for="startPoints"> Start-point's address: {String(address[0]).replace("undefined", '')}</label>}
+        <br/>
               
-        <DropDownLIst data={countries} idName={"startPoints"} onChange={country_onChange}/>
-        
+        {!address[0] && <DropDownLIst data={countries} idName={"startPoints"} onChange={country_onChange}/>}
+      
 
-        <label for="endPoints">Select end point:</label>
-        <DropDownLIst data={countries} idName={"endPoints"} onChange={country_onChange}/>
+        {!address[1] && <label for="endPoints">Select end point:</label>}
+        {address[1] && <label for="endPoints">End-point's address: {String(address[1]).replace("undefined", '')}</label>}
+        <br/>
+        {!address[1] && <DropDownLIst data={countries} idName={"endPoints"} onChange={country_onChange}/>}
 
-        <label for="endPoints">Select vehicle:</label>
-        <DropDownLIst data={vehicle} idName={"vehicle"} onChange={vehicle_onChange}/>
+        {<label for="endPoints">Select vehicle:</label>}
+  
+    
+        {<DropDownLIst data={vehicle} idName={"vehicle"} onChange={vehicle_onChange} />}
 
         <Item idName='transporetdUsefullLoad_ton' des='transported useful load (Ton)' handleChange= {(e)=> setLoadPerTon(e.target.value)} />
    
