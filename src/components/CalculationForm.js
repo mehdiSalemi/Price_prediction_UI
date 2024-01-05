@@ -1,6 +1,6 @@
 import React, { useState, useEffect,useContext} from 'react'
 import DropDownLIst from './DropDownLIst'
-import {Points, Distance} from "./../Countext";
+import {Points, DetailsCountry,Address,Distance,Estimated_time} from "./../Countext";
 import Item from './Item';
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,8 +12,8 @@ import History from './History';
 
 
 export default function CalculationForm() {
-    const [countries, setCountries] = useState([])
-    const [detailsCountry, setDetailsCountry] = useState([])
+   
+
     const [vehicle, setVehicle] = useState([])
     const [vehicleIsSelected, setVehicleIsSelected] = useState(false)
     const [detailsVehicle, setDetailsVehicle] = useState([])
@@ -21,23 +21,21 @@ export default function CalculationForm() {
     const [formData, setFormData] = useState({})
     const [showModal,setShowModal] = useState(false)
     const [resCalculate,setResCalculate] = useState()
-    const [address,setAddress] = useState([])
  
-    const [urlCountry, setUrlCountry] = useState('http://localhost:3000/countries')  
+ 
+   
     const [urlVicle, setuUrlVicle] = useState('http://localhost:3000/vehicle')  
 
 
     const {points,setPoints} = useContext(Points)
+    const {address,setAddress} = useContext(Address)
+    const {detailsCountry,setDetailsCountry} = useContext(DetailsCountry)
+    const {distance, setDistance} = useContext(Distance)
+    const {estimatedTime, setEstimatedTime} = useContext(Estimated_time)
 
 
 
-        
-    useEffect(()=>{
-        fetch(urlCountry)
-        .then(res=> res.json())
-        .then(json =>  setCountries(json))  
-
-   },[urlCountry])
+ 
     
     useEffect(()=>{
       fetch(urlVicle)
@@ -49,59 +47,6 @@ export default function CalculationForm() {
 
 
 
-
-  useEffect(()=>{
-    console.log(points)
-   
-    if(points.length > 0 && points.length <=2){
-      let loc= points[0]
-      if(points.length === 2){
-         loc= points[1]
-      }
-      fetch(`https://nominatim.openstreetmap.org/reverse?lat=${loc[0]}&lon=${loc[1]}&format=json`, {
-        headers: {
-          'User-Agent': 'ID of your APP/service/website/etc. v0.1'
-        }
-      }).then(res => res.json())
-        .then(res => {
-          console.log(res.address.country )
-         
-          let ads = res.address.country+" "+res.address.city+" "+res.address.postcod
-          // setAddress([...address,[ads, loc[0],loc[1]]])
-          setAddress([...address,[ads]])
-          country_set(res.address.country ,ads)
-        
-      })
-    }
-
-
-  },[points])
-
- async function country_onChange(name){
-   
-       await fetch(urlCountry+'?name='+name)
-          .then(res=> res.json())
-          .then(json => {
-            setPoints([...points,[json[0]['latitude'],json[0]['longitude']]])
-            setDetailsCountry([...detailsCountry,json[0]])
-          })
-          console.log(points)
-          console.log(detailsCountry)
-  }
-
-
-async function country_set(name){
-
-   console.log(urlCountry+'?name='+name)
-   await fetch(urlCountry+'?name='+name)
-       .then(res=> res.json())
-       .then(json => {
-        setDetailsCountry([...detailsCountry,json[0]])
-       }).catch(
-        (err)=>console.log(err)
-        )
-       
-}
 function vehicle_onChange(name){
   fetch(urlVicle+'?name='+name)
   .then(res=> res.json())
@@ -132,7 +77,9 @@ async  function calculation(){
     } else {
         console.log('No <h3> tag found within the element with class ".leaflet-routing-alt  h3"');
     }
-  
+    distancePerKM= (distance > 0) ? distance : distancePerKM
+    distancePerHouers =(estimatedTime > 0) ? estimatedTime:distancePerHouers
+    alert(distancePerHouers)
 
     let jsonItem =  {lengthWithUsefulLoad_km: parseFloat(distancePerKM), //length of the way with useful load in case of j-th transport task (KM)
       t_ConsumptionWithload_hour: parseFloat(distancePerHouers), //time consumption of ways with useful load
@@ -216,32 +163,19 @@ const handleSubmit = async (e) => {
 
     </Modal> 
     }
+    <div className='block'>
+      {<DropDownLIst data={vehicle} idName={"vehicle"} onChange={vehicle_onChange} lableDes={"Select vehicle:"} lableName={"vehicle"}/>}
+    </div>
+    <div className='block'>
+      <Item idName='transporetdUsefullLoad_ton' des='transported useful load (Ton): ' handleChange= {(e)=> setLoadPerTon(e.target.value)}  />
+    </div>
 
-     {/* <form method="post" onSubmit={handleSubmit} > */}
-
-        {!address[0] && <label for="startPoints">Select start point:</label>}
-        {address[0] && <label for="startPoints"> Start-point's address: {String(address[0]).replace("undefined", '')}</label>}
-        <br/>
-              
-        {!address[0] && <DropDownLIst data={countries} idName={"startPoints"} onChange={country_onChange}/>}
-      
-
-        {!address[1] && <label for="endPoints">Select end point:</label>}
-        {address[1] && <label for="endPoints">End-point's address: {String(address[1]).replace("undefined", '')}</label>}
-        <br/>
-        {!address[1] && <DropDownLIst data={countries} idName={"endPoints"} onChange={country_onChange}/>}
-
-        {<label for="endPoints">Select vehicle:</label>}
-  
-    
-        {<DropDownLIst data={vehicle} idName={"vehicle"} onChange={vehicle_onChange} />}
-
-        <Item idName='transporetdUsefullLoad_ton' des='transported useful load (Ton)' handleChange= {(e)=> setLoadPerTon(e.target.value)} />
    
-    
-        <button type="submit" on onClick={handleSubmit} class="btn btn-primary">Submit</button>
-        {showModal && <History points={points}  res= {resCalculate}/>}
-    {/* </form>     */}
+
+
+    <button type="submit" on onClick={handleSubmit} class="btn btn-primary">Calculator</button>
+    {showModal && <History points={points}  res= {resCalculate}/>}
+
 
   </div>
   

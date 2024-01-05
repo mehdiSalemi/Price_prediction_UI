@@ -20,59 +20,123 @@ export default function SearchBox() {
              setSearchText(e.target.value)
             }}
         /> */}
-        <Button variant='contained' color='primary' onClick={()=>{
-            const params ={
-                q:searchText,
-                format:'json',
-                addressdetails: 1,
-                polygon_geojson:0
-            };
-            const queryString = new URLSearchParams(params);
         
-    
-            const requestOptions ={
-                methode: "GET",
-                redirect: "follow"
-            };
-            fetch(`${NOMIATIM_URL}${queryString}`,requestOptions)
-            .then((response) => response.text())
-            .then((ressult) => {
-                console.log(JSON.parse(ressult))
-                setLIstPlaces(JSON.parse(ressult))
-            })
-            .catch((err)=>console.log(err))
-        }}>
-            SEarch
-
-        </Button>
-        <input type="text" id="myInput" onChange={(e)=>{
-             setSearchText(e.target.value)
-            }} 
-            // onKeyUp={()=>{
-            //     const params ={
-            //         q:searchText,
-            //         format:'json',
-            //         addressdetails: 1,
-            //         polygon_geojson:0
-            //     };
-            //     const queryString = new URLSearchParams(params);
-            //     console.log(queryString)
-        
-            //     const requestOptions ={
-            //         methode: "GET",
-            //         redirect: "follow"
-            //     };
-               
-            //     fetch(`${NOMIATIM_URL}${queryString}`,requestOptions)
-            //     .then((response) => response.text())
-            //     .then((ressult) => {
-            //         setLIstPlaces(JSON.parse(ressult))
-            //     })
-            //     .catch((err)=>{console.log(err); setLIstPlaces([])})
-            // }}
-            placeholder="Search for names.."
+       <div className='block'>
+        <input type="text" id="startPoint" onChange={(e)=>{
+                setSearchText(e.target.value)
+                }} 
+                onKeyUp={()=>{
+                    const params ={
+                        q:searchText,
+                        format:'json',
+                        addressdetails: 1,
+                        polygon_geojson:0
+                    };
+                    const queryString = new URLSearchParams(params);
+                    console.log(queryString)
             
-            title="Type in a name"></input>
+                    const requestOptions ={
+                        methode: "GET",
+                        redirect: "follow"
+                    };
+                
+                    fetch(`${NOMIATIM_URL}${queryString}`,requestOptions)
+                    .then((response) => response.text())
+                    .then((ressult) => {
+                        setLIstPlaces(JSON.parse(ressult))
+                    })
+                    .catch((err)=>{console.log(err); setLIstPlaces([])})
+                }}
+                
+                placeholder="You should enter dlivery address or postal code"
+                
+                title="Type in a name"></input>
+
+            {/* <Button variant='contained' color='primary' onClick={()=>{
+                const params ={
+                    q:searchText,
+                    format:'json',
+                    addressdetails: 1,
+                    polygon_geojson:0
+                };
+                const queryString = new URLSearchParams(params);
+            
+        
+                const requestOptions ={
+                    methode: "GET",
+                    redirect: "follow"
+                };
+                fetch(`${NOMIATIM_URL}${queryString}`,requestOptions)
+                .then((response) => response.text())
+                .then((ressult) => {
+                    console.log(JSON.parse(ressult))
+                    setLIstPlaces(JSON.parse(ressult))
+                })
+                .catch((err)=>console.log(err))
+            }}>
+                search
+
+        </Button> */}
+
+       </div>
+       <div className='block'>
+        <input type="text" id="endPoint" onChange={(e)=>{
+                setSearchText(e.target.value)
+                }} 
+                onKeyUp={()=>{
+                    const params ={
+                        q:searchText,
+                        format:'json',
+                        addressdetails: 1,
+                        polygon_geojson:0
+                    };
+                    const queryString = new URLSearchParams(params);
+                    console.log(queryString)
+            
+                    const requestOptions ={
+                        methode: "GET",
+                        redirect: "follow"
+                    };
+                
+                    fetch(`${NOMIATIM_URL}${queryString}`,requestOptions)
+                    .then((response) => response.text())
+                    .then((ressult) => {
+                        setLIstPlaces(JSON.parse(ressult))
+                    })
+                    .catch((err)=>{console.log(err); setLIstPlaces([])})
+                }}
+                
+                placeholder="You should enter dlivery address or postal code"
+                
+                title="Type in a name"></input>
+
+            {/* <Button variant='contained' color='primary' onClick={()=>{
+                const params ={
+                    q:searchText,
+                    format:'json',
+                    addressdetails: 1,
+                    polygon_geojson:0
+                };
+                const queryString = new URLSearchParams(params);
+            
+        
+                const requestOptions ={
+                    methode: "GET",
+                    redirect: "follow"
+                };
+                fetch(`${NOMIATIM_URL}${queryString}`,requestOptions)
+                .then((response) => response.text())
+                .then((ressult) => {
+                    console.log(JSON.parse(ressult))
+                    setLIstPlaces(JSON.parse(ressult))
+                })
+                .catch((err)=>console.log(err))
+            }}>
+                search
+
+        </Button> */}
+
+       </div>
             
 
             <ul id="myUL">
@@ -83,7 +147,8 @@ export default function SearchBox() {
                                 {
                                     setPoints([...points, [place.lat,place.lon]])
                                     setLIstPlaces([])
-                                    document.getElementById("myInput").value = ""
+                                    document.getElementById("startPoint").value = place.display_name
+                                    
                                 }
                             }>
                                 <a>{place.display_name}</a>
