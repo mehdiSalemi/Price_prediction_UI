@@ -3,6 +3,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { Button, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import "./SearchBox.css"
 import { Points } from '../Countext';
+import { point } from 'leaflet';
 
 
 const NOMIATIM_URL= "https://nominatim.openstreetmap.org/search?";
@@ -22,7 +23,8 @@ export default function SearchBox() {
         /> */}
         
        <div className='block'>
-        <input type="text" id="startPoint" onChange={(e)=>{
+        <label>Pickup address:</label>
+        <input style={{width:"70%", margin:"5px"}} type="text" id="startPoint" onChange={(e)=>{
                 setSearchText(e.target.value)
                 }} 
                 onKeyUp={()=>{
@@ -80,7 +82,8 @@ export default function SearchBox() {
 
        </div>
        <div className='block'>
-        <input type="text" id="endPoint" onChange={(e)=>{
+       <label>Delivery address:</label>
+        <input style={{width:"70%",margin:"5px"}} type="text" id="endPoint" onChange={(e)=>{
                 setSearchText(e.target.value)
                 }} 
                 onKeyUp={()=>{
@@ -147,7 +150,8 @@ export default function SearchBox() {
                                 {
                                     setPoints([...points, [place.lat,place.lon]])
                                     setLIstPlaces([])
-                                    document.getElementById("startPoint").value = place.display_name
+                                    let a = points.length ==0 ? "startPoint" :"endPoint"
+                                    document.getElementById(a).value = place.display_name
                                     
                                 }
                             }>

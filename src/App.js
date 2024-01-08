@@ -37,13 +37,14 @@ function App() {
 
 return (
   <div  className="App" >
-    <div style={{border:"1px solid black", width:"95%",  height:"500px"}}>
+    <div style={{width:"100%", margin:"5px",  height:"600px"}}>
       <Points.Provider value={{points,setPoints}}>
       <Address.Provider value={{address,setAddress}}>
       <DetailsCountry.Provider value={{detailsCountry,setDetailsCountry}}> 
       <Distance.Provider value={{distance, setDistance}}>
       <Estimated_time.Provider value={{estimatedTime, setEstimatedTime}}>
       <div class="split left">
+      <div> You should select address through one of the other methods on the followin</div>
       <div class="topnav">
               <a href="#Map" onClick={()=>updateToggle(1)} title='You can select sender and resiver place on the map' >Map</a>
               <a href="#Postal code" onClick={()=>updateToggle(2)} title='you can select sender and resiver country then enter distance'>Postal code</a>
@@ -84,8 +85,8 @@ return (
       </Points.Provider> 
     </div>
    
-    <div style={{border:"1px solid black",  height:"500px"}}>
-       <div style={{margin:"5px", }}>
+    <div id="table-wrapper" style={{ width:"100%", height:"500px", margin:"5px", overflow:"visible", overflowY:"scroll"}}>
+       <div id="table-scroll" style={{margin:"5px", }}>
           <h2>History</h2>
           <History/>
        </div>

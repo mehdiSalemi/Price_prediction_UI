@@ -79,7 +79,7 @@ async  function calculation(){
     }
     distancePerKM= (distance > 0) ? distance : distancePerKM
     distancePerHouers =(estimatedTime > 0) ? estimatedTime:distancePerHouers
-    alert(distancePerHouers)
+
 
     let jsonItem =  {lengthWithUsefulLoad_km: parseFloat(distancePerKM), //length of the way with useful load in case of j-th transport task (KM)
       t_ConsumptionWithload_hour: parseFloat(distancePerHouers), //time consumption of ways with useful load
