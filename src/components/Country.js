@@ -6,6 +6,7 @@ import Item from './Item';
 export default function Country() {
     const [urlCountry, setUrlCountry] = useState('http://localhost:3000/countries') 
     const [countries, setCountries] = useState([])
+ 
 
 
 
@@ -34,14 +35,13 @@ export default function Country() {
         
     }
    function country_onChange(name){
-
-         fetch(urlCountry+'?name='+name)
-            .then(res=> res.json())
-            .then(json => {
-                setPoints([...points,[json[0]['latitude'],json[0]['longitude']]])
-                setDetailsCountry([...detailsCountry,json[0]])
-            })
-
+      fetch(urlCountry+'?name='+name)
+        .then(res=> res.json())
+        .then(json => {
+            setPoints([...points,[json[0]['latitude'],json[0]['longitude']]])
+            setDetailsCountry([...detailsCountry,json[0]])
+      })
+      
     }
 
   useEffect(()=>{
@@ -63,6 +63,8 @@ export default function Country() {
       })
     }
   },[points])
+
+
     
   return (
     <div>

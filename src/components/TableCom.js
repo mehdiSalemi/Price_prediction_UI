@@ -3,7 +3,7 @@ import "./TableCom.css"
 
 
 export default function TableCom(props) {
-  console.log(props.data)
+
 
 
   return (
