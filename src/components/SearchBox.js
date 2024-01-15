@@ -50,7 +50,7 @@ export default function SearchBox() {
                     .catch((err)=>{console.log(err); setLIstPlaces([])})
                 }}
                 
-                placeholder="You should enter dlivery address or postal code"
+                placeholder="You should enter Pick up address or postal code"
                 
                 title="Type in a name"></input>
 
@@ -112,32 +112,6 @@ export default function SearchBox() {
                 placeholder="You should enter dlivery address or postal code"
                 
                 title="Type in a name"></input>
-
-            {/* <Button variant='contained' color='primary' onClick={()=>{
-                const params ={
-                    q:searchText,
-                    format:'json',
-                    addressdetails: 1,
-                    polygon_geojson:0
-                };
-                const queryString = new URLSearchParams(params);
-            
-        
-                const requestOptions ={
-                    methode: "GET",
-                    redirect: "follow"
-                };
-                fetch(`${NOMIATIM_URL}${queryString}`,requestOptions)
-                .then((response) => response.text())
-                .then((ressult) => {
-                    console.log(JSON.parse(ressult))
-                    setLIstPlaces(JSON.parse(ressult))
-                })
-                .catch((err)=>console.log(err))
-            }}>
-                search
-
-        </Button> */}
 
        </div>
             

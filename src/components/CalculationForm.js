@@ -22,7 +22,9 @@ export default function CalculationForm() {
     const [showModal,setShowModal] = useState(false)
     const [resCalculate,setResCalculate] = useState()
     const [fulePrice,setFulePrice] = useState()
- 
+    const [test,setTest] = useState(0)
+    const [ttest,setTtest] = useState(0)
+  
  
    
     const [urlVicle, setuUrlVicle] = useState('http://localhost:3000/vehicle')  
@@ -57,7 +59,7 @@ export default function CalculationForm() {
     }
 
 
- 
+  
     
     useEffect(()=>{
       fetch(urlVicle)
@@ -65,7 +67,6 @@ export default function CalculationForm() {
       .then(json =>  setVehicle(json))  
 
     },[urlVicle])
-
 
 
 // function getPrice(name){
@@ -105,7 +106,6 @@ async  function calculation(){
   }
   distancePerKM= (distance > 0) ? distance : distancePerKM
   distancePerHouers =(estimatedTime > 0) ? estimatedTime:distancePerHouers
-
 
   let jsonItem =  {lengthWithUsefulLoad_km: parseFloat(distancePerKM), //length of the way with useful load in case of j-th transport task (KM)
     t_ConsumptionWithload_hour: parseFloat(distancePerHouers), //time consumption of ways with useful load
@@ -176,7 +176,7 @@ const handleSubmit = async (e) => {
       <div class="modal-content">
       <span class="close" onClick={()=>{
                                         setShowModal(false);
-                                      //  window.location.reload(false);
+                                        window.location.reload(false);
                                       }
                                   }>&times;</span>
           <p>cost own vehicle and driver : {(resCalculate['cost_ownVehicleAndDriver'])}</p>
@@ -201,7 +201,7 @@ const handleSubmit = async (e) => {
 
 
     <button type="submit" on onClick={handleSubmit} class="btn btn-primary">Calculator</button>
-    {showModal && <History points={points}  res= {resCalculate}/>}
+    {/* {showModal && <History points={points}  res= {resCalculate}/>} */}
 
 
   </div>
