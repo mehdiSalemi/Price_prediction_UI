@@ -56,8 +56,8 @@ return (
       </Points.Provider> 
     </div>
    
-    <div id="table-wrapper" style={{ width:"100%", height:"500px", margin:"5px", overflow:"visible", overflowY:"scroll"}}>
-       <div id="table-scroll" style={{margin:"5px", }}>
+    <div id="table-wrapper" style={{ width:"90%", height:"500px", margin:"5%", overflow:"visible", overflowY:"scroll"}}>
+       <div id="table-scroll">
           <h2>History</h2>
           <History/>
        </div>

@@ -56,7 +56,10 @@ export default function Country() {
         }
       }).then(res => res.json())
         .then(res => {
-          let ads = res.address.country+" "+res.address.city
+          console.log("##################")
+          console.log(res)
+          console.log(res.display_name)
+          let ads = res.display_name
           setAddress([...address,[ads]])
           country_set(res.address.country ,ads)
         

@@ -105,7 +105,9 @@ async  function calculation(){
       console.log('No <h3> tag found within the element with class ".leaflet-routing-alt  h3"');
   }
   distancePerKM= (distance > 0) ? distance : distancePerKM
+  setDistance(distancePerKM)
   distancePerHouers =(estimatedTime > 0) ? estimatedTime:distancePerHouers
+  setEstimatedTime(distancePerHouers)
 
   let jsonItem =  {lengthWithUsefulLoad_km: parseFloat(distancePerKM), //length of the way with useful load in case of j-th transport task (KM)
     t_ConsumptionWithload_hour: parseFloat(distancePerHouers), //time consumption of ways with useful load
@@ -171,7 +173,7 @@ const handleSubmit = async (e) => {
 };
 
   return (
-    <div>
+    <div style={{"margin-top":"10%" }}>
     {showModal && <Modal >
       <div class="modal-content">
       <span class="close" onClick={()=>{
@@ -191,6 +193,18 @@ const handleSubmit = async (e) => {
     </Modal> 
     }
     <div className='block'>
+       <label>Pick up address: {address[0]} </label>
+    </div>
+    <div className='block'>
+       <label>Delivery address: {address[1]} </label>
+    </div>
+    <div className='block'>
+       <label>Distance per KM: {distance} </label>
+    </div>
+    <div className='block'>
+       <label>Fule price per litre: {fulePrice} </label>
+    </div>
+    <div className='block'>
       {<DropDownLIst data={vehicle} idName={"vehicle"} onChange={vehicle_onChange} lableDes={"Select vehicle:"} lableName={"vehicle"}/>}
     </div>
     <div className='block'>
@@ -200,7 +214,7 @@ const handleSubmit = async (e) => {
    
 
 
-    <button type="submit" on onClick={handleSubmit} class="btn btn-primary">Calculator</button>
+    <button type="submit" on onClick={handleSubmit} class="btn btn-primary">calculate</button>
     {/* {showModal && <History points={points}  res= {resCalculate}/>} */}
 
 

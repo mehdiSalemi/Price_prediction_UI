@@ -22,9 +22,9 @@ function updateToggle(id){
     <div>
     <div> You should select address through one of the other methods on the followin</div>
     <div class="topnav">
-            <a href="#Map" onClick={()=>updateToggle(1)} title='You can select sender and resiver place on the map' >Map</a>
-            <a href="#Postal code" onClick={()=>updateToggle(2)} title='you can select sender and resiver country then enter distance'>Postal code</a>
-            <a href="#Country" onClick={()=>updateToggle(3)}title='you can find sender and resiver location by postal code'>country</a>
+            <a href="#Map" onClick={()=>updateToggle(1)} title='You should select sender and resiver place on the map' >Map</a>
+            <a href="#Postal code" onClick={()=>updateToggle(2)} title='you should find sender and resiver location by postal code'>Postal code</a>
+            <a href="#Country" onClick={()=>updateToggle(3)}title='you should select sender and resiver country then sould enter distance'>country</a>
       
         </div>
         
