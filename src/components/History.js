@@ -46,8 +46,7 @@ export default function History() {
   },[callHisory])
 
   return (
-    <div>
-
+    <div >
 
       {!errors &&
         

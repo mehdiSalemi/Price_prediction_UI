@@ -7,7 +7,7 @@ export default function TableCom(props) {
 
 
   return (
-    <div>
+    <div style={{ overflow:'auto'}} >
       <table>
           <tr>
           {props.titles.map(title=><td>{title}</td>)}
